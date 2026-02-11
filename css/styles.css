@@ -449,7 +449,7 @@ header {
 .report-price-sub {
   font-size: 12px;
   color: var(--text-muted);
-  margin-top: 6px;
+  margin-top: 14px;
   letter-spacing: 0.02em;
 }
 
