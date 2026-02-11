@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Problema Não É O Seu Funil — Íntegros</title>
+  <meta name="description" content="Descubra por que o problema nunca foi o seu funil. Metodologia testada em dezenas de negócios para estruturar, crescer e escalar qualquer tipo de negócio.">
+  <meta property="og:title" content="O Problema Não É O Seu Funil">
+  <meta property="og:description" content="Descubra por que o problema nunca foi o seu funil. Metodologia testada em dezenas de negócios.">
+  <meta property="og:image" content="https://funil.somosintegros.com.br/img/og-image.jpg">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* === RESET === */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0D0D0D;
+      --bg-alt: #101010;
+      --bg-card: #141414;
+      --accent: #A33722;
+      --accent-hover: #8B2E1C;
+      --white: #FFFFFF;
+      --gray: #999999;
+      --gray-light: #676666;
+      --dot-color: #51504A;
+      --dot-color-light: #D9D9D9;
+      --card-border: #424242;
+      --font-title: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --max-w: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    /* === CTA BUTTON (pill shape) === */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 514px;
+      padding: 24px 32px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      width: 100%;
+      text-align: center;
+    }
+    .cta-btn:hover {
+      background: var(--accent-hover);
+      transform: scale(0.96);
+    }
+    .cta-btn .btn-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-direction: row-reverse;
+      width: 100%;
+    }
+    .cta-btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+    /* === CORNER DOTS === */
+    .corner-dots {
+      position: relative;
+    }
+    .corner-dots::before,
+    .corner-dots::after,
+    .corner-dots .dot-bl,
+    .corner-dots .dot-br {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--dot-color);
+      z-index: 2;
+    }
+    .corner-dots::before { top: -5px; left: -5px; }
+    .corner-dots::after { top: -5px; right: -5px; }
+    .corner-dots .dot-bl { bottom: -5px; left: -5px; }
+    .corner-dots .dot-br { bottom: -5px; right: -5px; }
+
+    /* Light corner dots variant */
+    .corner-dots-light::before,
+    .corner-dots-light::after,
+    .corner-dots-light .dot-bl,
+    .corner-dots-light .dot-br {
+      width: 7px;
+      height: 7px;
+      background: var(--dot-color-light);
+    }
+
+    /* =========================================
+       HERO (ref: 786cfeb)
+       ========================================= */
+    .hero {
+      min-height: 841px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      padding: 29px 0 73px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(221deg, #00000000 0%, #000000 74%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      width: 100%;
+      padding: 0 24px;
+      text-align: left;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 32px;
+      color: var(--white);
+      border: 1px solid #FFFFFF69;
+      border-radius: 999px;
+      padding: 1px 16px;
+      margin-bottom: 34px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body);
+      font-weight: 400;
+      letter-spacing: 2.2px;
+      color: #DFDFDF;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .hero-badge svg { flex-shrink: 0; }
+    .hero h1 {
+      font-family: var(--font-title);
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 56px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 0.5px;
+      color: #F2F2F2B5;
+      max-width: 636px;
+      margin-bottom: 50px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero .cta-btn { max-width: 480px; }
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    /* =========================================
+       CONTENT / CARDS (ref: d538dc2)
+       ========================================= */
+    .content-section {
+      background: var(--bg-alt);
+      padding: 62px 0 244px;
+    }
+    .content-inner {
+      display: flex;
+      gap: 40px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .content-sidebar {
+      flex: 0 0 300px;
+      position: sticky;
+      top: 36px;
+      align-self: flex-start;
+      height: fit-content;
+    }
+    .content-sidebar .sidebar-icon { margin-bottom: 20px; }
+    .content-sidebar .sidebar-icon svg { fill: transparent; }
+    .content-sidebar h2 {
+      font-family: var(--font-title);
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 42px;
+      margin-bottom: 12px;
+    }
+    .content-sidebar h2 .highlight {
+      display: inline;
+      background: var(--accent);
+      color: var(--white);
+      padding: 2px 8px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .content-sidebar .sidebar-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .content-cards {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Text card */
+    .text-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--card-border);
+      padding: 45px;
+      position: sticky;
+    }
+    .text-card:nth-child(1) { top: 36px; z-index: 1; }
+    .text-card:nth-child(2) { top: 36px; z-index: 1; }
+    .text-card:nth-child(3) { top: 78px; z-index: 2; }
+    .text-card:nth-child(4) { top: 78px; z-index: 2; }
+    .text-card:nth-child(5) { top: 120px; z-index: 3; }
+    .text-card:nth-child(6) { top: 120px; z-index: 3; }
+    .text-card:nth-child(7) { top: 162px; z-index: 4; }
+    .text-card:nth-child(8) { top: 162px; z-index: 4; }
+
+    .text-card .card-icon {
+      margin-bottom: 16px;
+    }
+    .text-card .card-icon svg { fill: var(--accent); }
+    .text-card h3 {
+      font-family: var(--font-title);
+      font-size: 26px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .text-card p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 28px;
+      color: #C4C4C4;
+    }
+
+    /* Image card */
+    .image-card {
+      border: 1px solid var(--card-border);
+      position: sticky;
+      overflow: hidden;
+      min-height: 380px;
+    }
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 380px;
+    }
+
+    /* =========================================
+       FOTO + TEXTO IMPACTANTE (new section)
+       ========================================= */
+    .impact-section {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+    .impact-inner {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .impact-image {
+      flex: 0 0 50%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .impact-image img { width: 100%; border-radius: 8px; }
+    .impact-text { flex: 1; }
+    .impact-text .eyebrow {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 29px;
+      padding: 0 10px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .impact-text h2 {
+      font-family: var(--font-title);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 48px;
+      margin-bottom: 20px;
+    }
+    .impact-text p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 28px;
+      color: #C4C4C4;
+      margin-bottom: 32px;
+    }
+    .impact-text .cta-btn { max-width: 480px; }
+
+    /* =========================================
+       PRICING HEADER (ref: pricing area)
+       ========================================= */
+    .pricing-header-section {
+      background: var(--bg-alt);
+      padding: 80px 0 0;
+      text-align: center;
+    }
+    .pricing-header-section .pricing-icon { margin-bottom: 20px; }
+    .pricing-header-section h2 {
+      font-family: var(--font-title);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 56px;
+      margin-bottom: 8px;
+    }
+    .pricing-header-section h2 span {
+      font-weight: 300;
+      font-size: 18px;
+      display: block;
+      font-family: var(--font-body);
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .pricing-header-section .subtitle {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    /* Arrow down image */
+    .arrow-down {
+      display: flex;
+      justify-content: center;
+      padding: 40px 0;
+    }
+    .arrow-down svg {
+      width: 60px;
+      height: auto;
+      fill: var(--accent);
+    }
+
+    /* =========================================
+       WHITE PRICING CARD (ref: ffee32b)
+       ========================================= */
+    .pricing-card-section {
+      background: var(--bg-alt);
+      padding: 0 0 40px;
+    }
+    .white-card {
+      background: var(--white);
+      border-radius: 0 32px 32px 0;
+      padding: 41px;
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 37px;
+      position: relative;
+      color: #000;
+    }
+    .white-card .logo-text {
+      font-family: var(--font-title);
+      font-size: 24px;
+      font-weight: 800;
+      color: #000;
+      text-align: center;
+    }
+    .white-card .security-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .white-card .security-badges svg { fill: #767676; }
+    .white-card .price-value {
+      font-family: var(--font-title);
+      font-size: 112px;
+      font-weight: 800;
+      color: #000;
+      line-height: 1;
+      text-align: center;
+    }
+    .white-card .price-value small {
+      font-size: 28px;
+      font-weight: 600;
+      vertical-align: super;
+    }
+    .white-card .price-installments {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+      margin-top: -20px;
+    }
+    .white-card .cta-btn {
+      background: var(--accent);
+      color: var(--white);
+      width: 100%;
+    }
+    .white-card .trust-text {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      line-height: 18px;
+    }
+
+    /* =========================================
+       PRICING 2-COL (ref: dc07c3e)
+       ========================================= */
+    .pricing-persuasion {
+      background: var(--bg-alt);
+      padding: 0 0 99px;
+    }
+    .pricing-persuasion .container {
+      margin-top: 54px;
+    }
+    .pricing-2col {
+      display: flex;
+      gap: 32px;
+      align-items: stretch;
+    }
+    .pricing-left {
+      flex: 0 0 65%;
+    }
+    .pricing-left h3 {
+      font-family: var(--font-title);
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .pricing-left h3 span {
+      font-weight: 300;
+      font-size: 16px;
+      display: block;
+      font-family: var(--font-body);
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .persuasion-box {
+      background: #F8F8F8;
+      border: 1px solid #CDCDCD;
+      padding: 18px 24px;
+      position: relative;
+      color: #333;
+    }
+    .persuasion-box p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 26px;
+      color: #444;
+    }
+    .persuasion-box p + p { margin-top: 16px; }
+
+    .pricing-right {
+      flex: 0 0 35%;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 409px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+    }
+    .pricing-right-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .pricing-right-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pricing-right-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #00000000 32%, #000000 96%);
+    }
+    .pricing-right-content {
+      position: relative;
+      z-index: 1;
+    }
+    .pricing-right-content h4 {
+      font-family: var(--font-title);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .pricing-right-content p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 24px;
+      color: #ddd;
+      margin-bottom: 24px;
+    }
+    .pricing-right-content .cta-btn { font-size: 16px; padding: 18px 24px; }
+    .pricing-right-content .security-badges-sm {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .pricing-right-content .security-badges-sm svg { fill: #676666; width: 16px; height: 16px; }
+    .pricing-right-content .security-badges-sm span { font-size: 11px; color: #888; }
+
+    /* =========================================
+       BIO (ref: 1f19013)
+       ========================================= */
+    .bio-section {
+      background: #090909;
+      padding: 49px 0 77px;
+    }
+    .bio-inner {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .bio-text { flex: 1; }
+    .bio-text .eyebrow {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .bio-text h2 {
+      font-family: var(--font-title);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 56px;
+      margin-bottom: 24px;
+    }
+    .bio-text p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 28px;
+      color: #C4C4C4;
+      margin-bottom: 16px;
+    }
+    .bio-image {
+      flex: 0 0 420px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .bio-image img { width: 100%; border-radius: 12px; }
+
+    /* =========================================
+       GUARANTEE (ref: aaf0f6d)
+       ========================================= */
+    .guarantee-section {
+      background: #000000;
+      margin-top: -66px;
+      padding: 100px 0 80px;
+      position: relative;
+      z-index: 1;
+    }
+    .guarantee-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .guarantee-seal {
+      flex: 0 0 200px;
+      animation: rotateSeal 12s linear infinite;
+    }
+    @keyframes rotateSeal {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .guarantee-seal svg {
+      width: 200px;
+      height: 200px;
+    }
+    .guarantee-text h2 {
+      font-family: var(--font-title);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 51px;
+      margin-bottom: 16px;
+    }
+    .guarantee-text p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 32px;
+      color: #F2F2F2BF;
+      max-width: 455px;
+    }
+
+    /* =========================================
+       FAQ (ref: de833c7)
+       ========================================= */
+    .faq-section {
+      background: #141414;
+      padding: 80px 0 69px;
+    }
+    .faq-header {
+      margin-bottom: 40px;
+    }
+    .faq-header .label {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0 10px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 29px;
+      margin-bottom: 12px;
+    }
+    .faq-header h2 {
+      font-family: var(--font-title);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 48px;
+    }
+    .faq-layout {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .faq-accordion { flex: 0 0 65%; }
+    .faq-support { flex: 0 0 calc(35% - 40px); }
+
+    .faq-item {
+      background: #1E1E1E;
+      border-bottom: 1px solid #252525;
+    }
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 30px;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--gray);
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform 0.3s;
+    }
+    .faq-item[open] summary::after {
+      content: '-';
+    }
+    .faq-answer {
+      padding: 0 30px 20px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 26px;
+      color: #C4C4C4;
+    }
+
+    .faq-support-box {
+      background: #1E1E1E;
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      position: sticky;
+      top: 40px;
+    }
+    .faq-support-box img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 20px;
+    }
+    .faq-support-box h3 {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      margin-bottom: 20px;
+    }
+    .faq-support-box .cta-btn {
+      font-size: 16px;
+      padding: 18px 24px;
+      background: #25D366;
+    }
+    .faq-support-box .cta-btn:hover { background: #1DA851; }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    .footer {
+      background: #141414;
+      padding: 60px 0 40px;
+      border-top: 1px solid #1E1E1E;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-title);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+    .footer p {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #767676;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #767676;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* =========================================
+       RESPONSIVE
+       ========================================= */
+    @media (max-width: 1024px) {
+      .hero { min-height: 600px; }
+      .hero h1 { font-size: 38px; line-height: 44px; }
+      .content-inner { flex-direction: column; }
+      .content-sidebar {
+        position: static;
+        flex: auto;
+      }
+      .pricing-2col { flex-direction: column; }
+      .pricing-left, .pricing-right { flex: auto; }
+      .bio-inner { flex-direction: column; }
+      .bio-image { flex: auto; width: 100%; }
+      .guarantee-inner { flex-direction: column; text-align: center; }
+      .guarantee-seal { flex: auto; margin: 0 auto; }
+      .guarantee-text p { max-width: 100%; }
+      .faq-layout { flex-direction: column; }
+      .faq-accordion, .faq-support { flex: auto; width: 100%; }
+      .impact-inner { flex-direction: column; }
+      .impact-image { flex: auto; }
+      .white-card .price-value { font-size: 55px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { min-height: 500px; padding: 20px 0 40px; }
+      .hero h1 { font-size: 32px; line-height: 38px; }
+      .hero-desc { font-size: 14px; line-height: 22px; }
+      .content-section { padding: 40px 0 80px; }
+      .text-card { padding: 24px; position: static !important; }
+      .image-card { min-height: 250px; position: static !important; }
+      .image-card img { min-height: 250px; }
+      .pricing-header-section h2 { font-size: 32px; line-height: 40px; }
+      .white-card { padding: 28px 20px; border-radius: 0 20px 20px 0; }
+      .white-card .price-value { font-size: 55px; }
+      .white-card .price-value small { font-size: 18px; }
+      .bio-text h2 { font-size: 32px; line-height: 40px; }
+      .guarantee-text h2 { font-size: 28px; line-height: 38px; }
+      .faq-header h2 { font-size: 28px; line-height: 36px; }
+      .faq-item summary { padding: 16px 20px; font-size: 14px; }
+      .faq-answer { padding: 0 20px 16px; font-size: 14px; }
+      .impact-text h2 { font-size: 28px; line-height: 36px; }
+      .pricing-left h3 { font-size: 28px; }
+    }
+
+    /* =========================================
+       SCROLL REVEAL
+       ========================================= */
+    .rv {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+    }
+    .rv.v {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .rv.d1 { transition-delay: 0.05s; }
+    .rv.d2 { transition-delay: 0.12s; }
+    .rv.d3 { transition-delay: 0.20s; }
+    .rv.d4 { transition-delay: 0.28s; }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; line-height: 34px; }
+      .cta-btn { font-size: 16px; padding: 20px 24px; }
+      .hero-eyebrow { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="img/hero-bg.jpg" alt="Hero background">
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow rv d1">AULA GRAVADA | MENOS DE 30 MIN</div>
+
+      <div class="hero-badge rv d2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 86 86" fill="none">
+          <rect x="12" y="12" width="63" height="63" fill="#A33722"></rect>
+          <path d="M1 11V1H11" stroke="#A33722" stroke-width="2"></path>
+          <path d="M85 11V1H75" stroke="#A33722" stroke-width="2"></path>
+          <path d="M1 75V85H11" stroke="#A33722" stroke-width="2"></path>
+          <path d="M85 75V85H75" stroke="#A33722" stroke-width="2"></path>
+          <path d="M53.125 35.25H33.875C32.3562 35.25 31.125 36.4812 31.125 38V53.125C31.125 54.6438 32.3562 55.875 33.875 55.875H53.125C54.6438 55.875 55.875 54.6438 55.875 53.125V38C55.875 36.4812 54.6438 35.25 53.125 35.25Z" stroke="black" stroke-width="2.75"></path>
+          <path d="M32.5 42.125H54.5M39.375 49H47.625M38 31.125V36.625M49 31.125V36.625" stroke="black" stroke-width="2.75" stroke-linecap="round"></path>
+        </svg>
+        ÍNTEGROS | KEVIN
+      </div>
+
+      <h1 class="rv d3">O Problema <em>Não É</em> O Seu Funil</h1>
+
+      <p class="hero-desc rv d4">Uma aula gravada, direta e sem enrolação, que vai mudar completamente a forma como você enxerga o seu negócio. Em menos de 30 minutos, você vai entender por que o funil nunca foi o verdadeiro problema — e o que fazer a partir de agora.</p>
+
+      <div class="hero-cta-row">
+        <a href="https://pay.assiny.com.br/80ff50/node/WpqMFP" class="cta-btn">
+          <span class="btn-content">
+            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>
+            <span>QUERO ASSISTIR AGORA | R$47</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTENT / CARDS ===================== -->
+  <section class="content-section">
+    <div class="content-inner">
+
+      <!-- Sticky sidebar -->
+      <div class="content-sidebar">
+        <div class="sidebar-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 86 86" fill="none">
+            <rect x="12" y="12" width="63" height="63" fill="#A33722"></rect>
+            <path d="M1 11V1H11" stroke="#A33722" stroke-width="2"></path>
+            <path d="M85 11V1H75" stroke="#A33722" stroke-width="2"></path>
+            <path d="M1 75V85H11" stroke="#A33722" stroke-width="2"></path>
+            <path d="M85 75V85H75" stroke="#A33722" stroke-width="2"></path>
+            <path d="M40.8333 53.5H45.5833V58.25H40.8333V53.5ZM51.9166 32.9167V42.4167H50.3333V44H48.7499V45.5833H45.5833V48.75H40.8333V44H42.4166V42.4167H45.5833V40.8333H47.1666V34.5H40.8333V36.0833H39.2499V37.6667H36.0833V32.9167H37.6666V31.3333H39.2499V29.75H48.7499V31.3333H50.3333V32.9167H51.9166Z" fill="black"></path>
+          </svg>
+        </div>
+        <h2 class="rv"><span class="highlight">POR QUE ENTENDER</span><br>o problema real?</h2>
+        <p class="sidebar-label rv">://CONTEÚDO</p>
+      </div>
+
+      <!-- Stacking cards -->
+      <div class="content-cards">
+
+        <!-- Card 1: Text -->
+        <div class="text-card corner-dots rv d1" style="top:36px; z-index:1;">
+          <span class="dot-bl"></span><span class="dot-br"></span>
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none"><g clip-path="url(#c1)"><path d="M26 13C26 16.4478 24.6304 19.7544 22.1924 22.1924C19.7544 24.6304 16.4478 26 13 26C9.55219 26 6.24558 24.6304 3.80761 22.1924C1.36964 19.7544 0 16.4478 0 13C0 12.569 0.171205 12.1557 0.475951 11.851C0.780698 11.5462 1.19402 11.375 1.625 11.375C2.05598 11.375 2.4693 11.5462 2.77405 11.851C3.0788 12.1557 3.25 12.569 3.25 13C3.25 14.9284 3.82183 16.8134 4.89317 18.4168C5.96452 20.0202 7.48726 21.2699 9.26884 22.0078C11.0504 22.7458 13.0108 22.9389 14.9021 22.5627C16.7934 22.1865 18.5307 21.2579 19.8943 19.8943C21.2579 18.5307 22.1865 16.7934 22.5627 14.9021C22.9389 13.0108 22.7458 11.0504 22.0078 9.26884C21.2699 7.48726 20.0202 5.96452 18.4168 4.89317C16.8134 3.82183 14.9284 3.25 13 3.25C12.569 3.25 12.1557 3.0788 11.851 2.77405C11.5462 2.4693 11.375 2.05598 11.375 1.625C11.375 1.19402 11.5462 0.780698 11.851 0.475951C12.1557 0.171205 12.569 0 13 0C16.4467 0.00372784 19.7511 1.37456 22.1883 3.81173C24.6254 6.24889 25.9963 9.55333 26 13Z" fill="#A33722"></path></g><defs><clipPath id="c1"><rect width="26" height="26" fill="white"></rect></clipPath></defs></svg>
+          </div>
+          <h3>PARE DE PERDER TEMPO</h3>
+          <p>Você está gastando horas otimizando funis que nunca vão funcionar enquanto o problema real continua escondido. Essa aula vai te mostrar exatamente onde está o gargalo que você não está vendo e como resolver em minutos.</p>
+        </div>
+
+        <!-- Card 1: Image -->
+        <div class="image-card corner-dots rv d2" style="top:36px; z-index:1;">
+          <span class="dot-bl"></span><span class="dot-br"></span>
+          <img src="img/card1.png" alt="Card 1" loading="lazy">
+        </div>
+
+        <!-- Card 2: Text -->
+        <div class="text-card corner-dots rv d1" style="top:78px; z-index:2;">
+          <span class="dot-bl"></span><span class="dot-br"></span>
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none"><g clip-path="url(#c2)"><path d="M11.4584 23.2854L7.6896 15.7479L0.1521 11.9792L7.6896 8.21042L11.4584 0.672917L15.2271 8.21042L22.7646 11.9792L15.2271 15.7479L11.4584 23.2854ZM7.1396 11.9792L10.0188 13.4187L11.4584 16.2979L12.8979 13.4187L15.7771 11.9792L12.8979 10.5396L11.4584 7.66042L10.0188 10.5396L7.1396 11.9792ZM18.75 21.875L20.3125 25L21.875 21.875L25 20.3125L21.875 18.75L20.3125 15.625L18.75 18.75L15.625 20.3125L18.75 21.875ZM20.1386 4.86146L21.3542 7.29167L22.5698 4.86146L25 3.64583L22.5698 2.43021L21.3542 0L20.1386 2.43021L17.7084 3.64583L20.1386 4.86146Z" fill="#A33722"></path></g><defs><clipPath id="c2"><rect width="25" height="25" fill="white"></rect></clipPath></defs></svg>
+          </div>
+          <h3>ENXERGUE O INVISÍVEL</h3>
+          <p>A maioria dos empreendedores culpa o funil, o tráfego ou a copy. Mas o verdadeiro problema está no modelo do negócio, na estrutura da oferta e na forma como você se posiciona. Vamos abrir seus olhos para o que realmente importa.</p>
+        </div>
+
+        <!-- Card 2: Image -->
+        <div class="image-card corner-dots rv d2" style="top:78px; z-index:2;">
+          <span class="dot-bl"></span><span class="dot-br"></span>
+          <img src="img/card2.png" alt="Card 2" loading="lazy">
+        </div>
+
+        <!-- Card 3: Text -->
+        <div class="text-card corner-dots rv d1" style="top:120px; z-index:3;">
+          <span class="dot-bl"></span><span class="dot-br"></span>
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#c3)"><path d="M22.575 10.1518C21.709 9.79378 20.721 9.98878 20.058 10.6518L19.62 11.0898C19.187 10.0458 18.41 9.17978 17.431 8.63178C18.396 7.71978 18.999 6.42878 18.999 4.99878C18.999 2.24178 16.756-0.0012207 13.999-0.0012207C12.365-0.0012207 10.912 0.786779 9.999 2.00178C9.086 0.785779 7.633-0.0012207 5.999-0.0012207C3.243-0.000220703 1 2.24278 1 4.99978C1 6.42878 1.603 7.72078 2.568 8.63278C1.037 9.48878 0 11.1258 0 12.9998V18.9998C0 21.7568 2.243 23.9998 5 23.9998H15C17.081 23.9998 18.869 22.7218 19.621 20.9098L20.059 21.3478C20.502 21.7908 21.09 22.0258 21.689 22.0258C21.987 22.0258 22.288 21.9678 22.575 21.8488C23.441 21.4908 24 20.6528 24 19.7158V12.2868C24 11.3488 23.44 10.5118 22.575 10.1538V10.1518Z" fill="#A33722"></path></g><defs><clipPath id="c3"><rect width="24" height="24" fill="white"></rect></clipPath></defs></svg>
+          </div>
+          <h3>MÉTODO + CLAREZA</h3>
+          <p>Não é sobre seguir mais um guru ou copiar mais uma estratégia. É sobre ter clareza do que funciona para o SEU negócio. Quando você junta método com visão estratégica, os resultados vêm de forma natural e consistente.</p>
+        </div>
+
+        <!-- Card 3: Image -->
+        <div class="image-card corner-dots rv d2" style="top:120px; z-index:3;">
+          <span class="dot-bl"></span><span class="dot-br"></span>
+          <img src="img/card3.png" alt="Card 3" loading="lazy">
+        </div>
+
+        <!-- Card 4: Text (NEW - A SAIDA EXISTE) -->
+        <div class="text-card corner-dots rv d1" style="top:162px; z-index:4;">
+          <span class="dot-bl"></span><span class="dot-br"></span>
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 0C5.82 0 0 5.82 0 13s5.82 13 13 13 13-5.82 13-13S20.18 0 13 0zm1.625 19.5h-3.25v-3.25h3.25v3.25zm0-5.85h-3.25V6.5h3.25v7.15z" fill="#A33722"/></svg>
+          </div>
+          <h3>A SAÍDA EXISTE</h3>
+          <p>Depois de entender o problema, você vai ver que a solução é muito mais simples do que imagina. Não precisa de mais ferramentas, mais tráfego ou mais conteúdo. Precisa de direção. Essa aula é o primeiro passo para destravar o seu crescimento de verdade.</p>
+        </div>
+
+        <!-- Card 4: Image -->
+        <div class="image-card corner-dots rv d2" style="top:162px; z-index:4;">
+          <span class="dot-bl"></span><span class="dot-br"></span>
+          <img src="img/card4.png" alt="Card 4" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOTO + TEXTO IMPACTANTE ===================== -->
+  <section class="impact-section">
+    <div class="impact-inner">
+      <div class="impact-image rv d1">
+        <img src="img/decisao.png" alt="A hora da decisão" loading="lazy">
+      </div>
+      <div class="impact-text">
+        <span class="eyebrow rv">MOMENTO DE DECISÃO</span>
+        <h2 class="rv">A verdade que ninguém te conta sobre funis</h2>
+        <p class="rv">Você já gastou dinheiro com tráfego, já testou dezenas de headlines, já trocou de plataforma, já refez a copy inteira. E o resultado? Continua no mesmo lugar. O problema nunca foi o funil. O problema é que você está resolvendo a equação errada. Nessa aula, o Kevin vai te mostrar exatamente o que está travando o seu negócio e como destravar.</p>
+        <a href="https://pay.assiny.com.br/80ff50/node/WpqMFP" class="cta-btn">
+          <span class="btn-content">
+            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>
+            <span>QUERO ASSISTIR AGORA | R$47</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICING HEADER ===================== -->
+  <section class="pricing-header-section">
+    <div class="container">
+      <div class="pricing-icon" style="margin-bottom:20px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="46" viewBox="0 0 49 46" fill="none"><path d="M23.6299 11.9199L34.8506 0H43.1514V3.36523C43.1514 4.92332 44.4146 6.18652 45.9727 6.18652H48.96V45.875H34.8506V20.6797L11.1348 45.875H5.64258V42.6855C5.64258 41.1275 4.37937 39.8643 2.82129 39.8643H0V37.0244L20.9102 14.8096H0V0H23.6299V11.9199Z" fill="#A33722"></path></svg>
+      </div>
+      <h2>
+        <span>GARANTA SEU ACESSO</span>
+        garanta SEU ACESSO
+      </h2>
+      <p class="subtitle">Aula gravada, menos de 30 minutos. Assista quantas vezes quiser.</p>
+    </div>
+  </section>
+
+  <!-- Arrow Down -->
+  <div class="arrow-down" style="background:#101010;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#A33722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:60px;height:60px;">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+
+  <!-- ===================== WHITE PRICING CARD ===================== -->
+  <section class="pricing-card-section">
+    <div class="white-card corner-dots corner-dots-light">
+      <span class="dot-bl"></span><span class="dot-br"></span>
+
+      <div class="logo-text">ÍNTEGROS</div>
+
+      <div class="security-badges">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+        <span style="font-size:12px;color:#767676;">Compra segura e protegida</span>
+      </div>
+
+      <div class="price-value"><small>R$</small>47<small>,00</small></div>
+      <div class="price-installments">ou 11x de R$ 5,06</div>
+
+      <a href="https://pay.assiny.com.br/80ff50/node/WpqMFP" class="cta-btn">
+        <span class="btn-content">
+          <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>
+          <span>QUERO ASSISTIR AGORA</span>
+        </span>
+      </a>
+
+      <p class="trust-text">Acesso imediato após a confirmação do pagamento. Satisfação garantida ou seu dinheiro de volta em até 7 dias.</p>
+    </div>
+  </section>
+
+  <!-- Arrow Down -->
+  <div class="arrow-down" style="background:#101010;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#A33722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:60px;height:60px;">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+
+  <!-- ===================== PRICING PERSUASION 2-COL ===================== -->
+  <section class="pricing-persuasion">
+    <div class="container">
+      <div class="pricing-2col">
+
+        <!-- Left 65% -->
+        <div class="pricing-left">
+          <h3>
+            <span>GARANTA SEU ACESSO</span>
+            garanta SEU ACESSO
+          </h3>
+          <div class="persuasion-box corner-dots corner-dots-light">
+            <span class="dot-bl"></span><span class="dot-br"></span>
+            <p>Porque é mais inteligente te provar que eu sei do que falar que sei. Se você sair transformado depois dessa aula, a próxima decisão é fácil: você vai querer continuar comigo.</p>
+            <p>Só te digo uma coisa, se prepare! Porque sua cabeça vai explodir, quem quer crescer no mercado hoje, precisa entender como negócio de verdade funciona. Essa aula vai te fazer enxergar o que você não estava vendo e que ia acabar te engolindo.</p>
+          </div>
+        </div>
+
+        <!-- Right 35% -->
+        <div class="pricing-right">
+          <div class="pricing-right-bg">
+            <img src="img/hero-bg.jpg" alt="Background">
+          </div>
+          <div class="pricing-right-content">
+            <h4>Tem muita oportunidade esperando</h4>
+            <p>Qual profissional você quer ser? Tem uma chance que vai te fazer chegar em outro nível. Quero te mostrar o que ninguém está vendo.</p>
+            <a href="https://pay.assiny.com.br/80ff50/node/WpqMFP" class="cta-btn">
+              <span class="btn-content">
+                <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg>
+                <span>QUERO ASSISTIR AGORA | R$47</span>
+              </span>
+            </a>
+            <div class="security-badges-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+              <span>Compra segura e protegida</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BIO ===================== -->
+  <section class="bio-section">
+    <div class="bio-inner">
+      <div class="bio-text">
+        <p class="eyebrow rv">PRAZER!</p>
+        <h2 class="rv">Quem é o Kevin?</h2>
+        <p class="rv">O Kevin é o cara por trás da Íntegros, uma das consultorias mais respeitadas para negócios digitais no Brasil. Um estrategista que começou do zero, com uma visão clara e uma vontade absurda de transformar a forma como empreendedores constroem seus negócios.</p>
+        <p class="rv">Hoje, ele ajuda dezenas de negócios a estruturar, crescer e escalar com método. Ele construiu um sistema que é usado por empresários que querem parar de depender de táticas e começar a construir um negócio de verdade, com fundamento e direção.</p>
+        <p class="rv">Ele acredita que todo empreendedor pode chegar lá, se tiver vontade e direção. E foi pra isso que nasceu essa aula: para te mostrar o que você não está vendo.</p>
+      </div>
+      <div class="bio-image">
+        <img src="img/kevin.jpg" alt="Kevin" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GUARANTEE ===================== -->
+  <section class="guarantee-section">
+    <div class="guarantee-inner">
+      <div class="guarantee-seal">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="95" fill="none" stroke="#A33722" stroke-width="2"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#A33722" stroke-width="1"/>
+          <text x="100" y="70" text-anchor="middle" fill="#A33722" font-family="Syne" font-size="14" font-weight="700">GARANTIA</text>
+          <text x="100" y="110" text-anchor="middle" fill="white" font-family="Syne" font-size="36" font-weight="800">7</text>
+          <text x="100" y="135" text-anchor="middle" fill="#A33722" font-family="Syne" font-size="14" font-weight="700">DIAS</text>
+          <text x="100" y="160" text-anchor="middle" fill="#666" font-family="DM Sans" font-size="10">INCONDICIONAL</text>
+        </svg>
+      </div>
+      <div class="guarantee-text">
+        <h2 class="rv">Garantia incondicional de 7 dias</h2>
+        <p class="rv">Nós damos garantia incondicional de 7 dias. Assistiu e não gostou, pode pedir o dinheiro de volta. Sem burocracia, sem drama. Simples assim.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-header">
+        <span class="label">FAQ</span>
+        <h2 class="rv">As dúvidas mais frequentes</h2>
+      </div>
+
+      <div class="faq-layout">
+
+        <!-- Accordion -->
+        <div class="faq-accordion">
+
+          <details class="faq-item">
+            <summary>O que eu vou aprender nessa aula?</summary>
+            <div class="faq-answer">Você vai entender por que o funil nunca foi o problema real do seu negócio, qual é a verdadeira causa dos seus resultados travados e o que fazer a partir de agora para destravar o crescimento.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>É pra iniciante? Vou conseguir acompanhar?</summary>
+            <div class="faq-answer">Sim. A aula foi pensada para ser direta e acessível, independente do seu nível. Se você tem um negócio digital ou quer começar um, vai conseguir acompanhar e aplicar.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Quanto tempo dura a aula?</summary>
+            <div class="faq-answer">Menos de 30 minutos. É uma aula gravada, direto ao ponto, sem enrolação. Você pode assistir no seu tempo e quantas vezes quiser.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Como eu acesso a aula?</summary>
+            <div class="faq-answer">Após a compra, você recebe tudo no seu e-mail com o link e instruções de acesso. Se der qualquer problema, o suporte te ajuda na hora.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>A aula fica gravada? Posso reassistir?</summary>
+            <div class="faq-answer">Sim! A aula é gravada e você terá acesso para assistir quantas vezes quiser, no seu ritmo.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Como funciona a garantia?</summary>
+            <div class="faq-answer">A garantia é incondicional de 7 dias. Assistiu e não gostou, pode pedir reembolso. Simples, sem drama.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Funciona pra qualquer tipo de negócio?</summary>
+            <div class="faq-answer">Sim. O conceito ensinado se aplica a qualquer negócio digital: infoprodutos, serviços, e-commerce, consultorias. O que muda não é o nicho, é a forma de pensar o negócio.</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Já sou aluno da Íntegros. Ainda vale?</summary>
+            <div class="faq-answer">Se você já é aluno, já tem acesso a conteúdos avançados. Mas essa aula é um ótimo ponto de partida ou revisão para reforçar os fundamentos antes de escalar.</div>
+          </details>
+
+        </div>
+
+        <!-- Support box -->
+        <div class="faq-support">
+          <div class="faq-support-box">
+            <img src="img/kevin.jpg" alt="Suporte Kevin" loading="lazy">
+            <h3>Se você tiver alguma dúvida, é só chamar no WhatsApp!</h3>
+            <a href="https://wa.me/message" class="cta-btn" style="background:#25D366;">
+              <span class="btn-content">
+                <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>
+                <span>FALAR COM O SUPORTE</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">ÍNTEGROS</div>
+        <p>&copy; Copyright 2026. Todos os direitos reservados.</p>
+        <div class="footer-links">
+          <a href="#">Políticas de privacidade</a>
+          <a href="#">Termos de uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Reveal -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('v');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+    document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+  </script>
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
