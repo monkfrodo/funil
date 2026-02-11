@@ -33,13 +33,10 @@ header {
   pointer-events: none;
 }
 .logo {
-  font-family: var(--serif);
-  font-size: 14px;
-  font-style: italic;
-  font-weight: 400;
-  color: #fff;
+  height: 18px;
+  width: auto;
   opacity: 0.4;
-  letter-spacing: 0.08em;
+  filter: invert(1);
 }
 
 /* ════════════════════════════════════════
