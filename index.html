@@ -172,6 +172,46 @@
   </div>
 
 
+  <!-- ══ 07 — O SISTEMA ══ -->
+  <div class="dark-section">
+    <div class="text-col reveal">
+      <div class="section-marker">
+        <span class="marker-num">07</span>
+        <span class="marker-line"></span>
+        <span class="marker-label">O Sistema</span>
+      </div>
+      <p>Mas o diagnóstico sozinho não muda nada. <strong>Você precisa de um sistema para aplicar, acompanhar e corrigir o rumo.</strong></p>
+      <p>Por isso, junto com a aula, você recebe acesso à <em>Caixa de Ferramentas</em> — uma plataforma construída para profissionais de serviço que querem sair do achismo:</p>
+    </div>
+  </div>
+
+  <!-- ══ SHOWCASE — PLATAFORMA ══ -->
+  <div class="showcase-section">
+
+    <div class="showcase-block reveal">
+      <div class="showcase-img">
+        <img src="img/crop-tracker.png" alt="Dashboard com heatmap, ranking e métricas" loading="lazy">
+      </div>
+      <p class="showcase-caption">Check-in diário, heatmap de progresso, ranking entre participantes. Você vê se está fazendo o que precisa.</p>
+    </div>
+
+    <div class="showcase-block reveal">
+      <div class="showcase-img">
+        <img src="img/crop-ferramentas.png" alt="Matriz de Horários e Diagnóstico" loading="lazy">
+      </div>
+      <p class="showcase-caption">Mapeie cada tarefa, calcule o teto da sua operação e receba um diagnóstico com plano de ação personalizado.</p>
+    </div>
+
+    <div class="showcase-block reveal">
+      <div class="showcase-img">
+        <img src="img/crop-agentes.png" alt="Agentes de IA especializados" loading="lazy">
+      </div>
+      <p class="showcase-caption">Agentes com acesso aos seus dados. Te ajudam com produto, oferta e geração de leads.</p>
+    </div>
+
+  </div>
+
+
   <!-- ══ DIAGNOSTIC REPORT — CTA ══ -->
   <div class="card-section">
     <div class="report-card reveal">
@@ -184,18 +224,30 @@
       </div>
 
       <div class="report-body">
-        <div class="report-meta">
-          <div class="meta-item">
-            <span class="meta-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
-            <span class="meta-text">Menos de 30 min</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></span>
-            <span class="meta-text">Diagnóstico prático</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-            <span class="meta-text">Sem enrolação</span>
+
+        <div class="report-includes">
+          <p class="report-includes-label">O que você recebe:</p>
+          <div class="report-includes-list">
+            <div class="include-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/></svg>
+              Aula diagnóstica (menos de 30 min)
+            </div>
+            <div class="include-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/></svg>
+              Matriz de Horários — seu teto produtivo em números
+            </div>
+            <div class="include-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/></svg>
+              Diagnóstico IA + plano de ação personalizado
+            </div>
+            <div class="include-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/></svg>
+              Agentes de IA para produto, oferta e leads
+            </div>
+            <div class="include-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/></svg>
+              Tracker diário com heatmap e ranking
+            </div>
           </div>
         </div>
 
@@ -204,7 +256,7 @@
           <div class="report-price-sub">ou 11x de R$ 5,06</div>
         </div>
 
-        <a href="https://pay.assiny.com.br/80ff50/node/WpqMFP" class="report-btn">Acessar a aula →</a>
+        <a href="https://pay.assiny.com.br/80ff50/node/WpqMFP" class="report-btn">Acessar agora →</a>
       </div>
 
       <div class="report-footer">
@@ -238,6 +290,21 @@
     <p class="footer-tagline">propósito, seriedade e integridade</p>
     <p class="footer-credits">feito com ☕ por Kevin Eger · todos os direitos reservados</p>
   </footer>
+
+
+  <!-- ══ EXIT-INTENT POPUP ══ -->
+  <div class="exit-overlay" id="exitOverlay">
+    <div class="exit-popup">
+      <button class="exit-close" id="exitClose" aria-label="Fechar">&times;</button>
+      <p class="exit-headline">Antes de ir:</p>
+      <p class="exit-body">Se você ainda não tem certeza, tudo bem. Me diz seu email que eu te mando <mark>um conteúdo por dia</mark> sobre como estruturar um negócio que funciona <strong>sem escravizar você</strong>.</p>
+      <form class="exit-form" id="exitForm">
+        <input type="email" class="exit-input" placeholder="Seu melhor email" required>
+        <button type="submit" class="exit-btn">Quero receber</button>
+      </form>
+      <p class="exit-fine">Sem spam. Cancele quando quiser.</p>
+    </div>
+  </div>
 
 
   <script src="js/main.js"></script>
