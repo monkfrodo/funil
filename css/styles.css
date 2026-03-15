@@ -312,8 +312,6 @@ header {
   padding: 40px 28px 72px;
   display: flex;
   justify-content: center;
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
 }
 
 .report-card {
@@ -507,8 +505,6 @@ header {
   z-index: 3;
   background: var(--bg);
   padding: 0 0 48px;
-  content-visibility: auto;
-  contain-intrinsic-size: 0 800px;
 }
 
 .showcase-block {
