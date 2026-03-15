@@ -76,7 +76,7 @@ header {
 
 /* Hero */
 .hero .bg {
-  background-image: url('../img/bg-hero-wide.jpg');
+  background-image: url('../img/hero-wide.webp');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -127,7 +127,7 @@ header {
 
 /* Piranesi */
 .panel-piranesi .bg {
-  background-image: url('../img/image-from-rawpixel-id-10024827-original.jpg');
+  background-image: url('../img/piranesi-bg.webp');
   background-position: center 20%;
 }
 .panel-piranesi .overlay {
@@ -138,7 +138,7 @@ header {
 
 /* Farmer */
 .panel-farmer .bg {
-  background-image: url('../img/image-from-rawpixel-id-3049257-jpeg.jpg');
+  background-image: url('../img/farmer-bg.webp');
   background-position: center 40%;
 }
 .panel-farmer .overlay {
