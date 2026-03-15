@@ -20,7 +20,6 @@ window.addEventListener('scroll', () => {
     ticking = true;
   }
 }, { passive: true });
-updateParallax();
 
 /* ── Reveal on scroll ── */
 const observer = new IntersectionObserver(entries => {
