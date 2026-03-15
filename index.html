@@ -32,7 +32,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:ital,opsz,wght@0,14..32,300..600;1,14..32,300..600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- Critical CSS inlined to eliminate render-blocking -->
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#080807;--text:#d6d2c8;--text-body:#a09d94;--text-muted:#55534c;--accent:#b03a3a;--accent-dim:rgba(176,58,58,.12);--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    header{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 0;text-align:center;mix-blend-mode:difference;pointer-events:none}
+    .logo{height:18px;width:auto;opacity:.4;filter:invert(1)}
+    .parallax-panel{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+    .hero{min-height:100vh}
+    .parallax-panel .bg{position:absolute;inset:-20% 0;background-size:cover;background-position:center;background-repeat:no-repeat;will-change:transform}
+    .parallax-panel .overlay{position:absolute;inset:0;pointer-events:none}
+    .parallax-panel .content{position:relative;z-index:2;max-width:720px;padding:0 36px}
+    .hero .bg{background-image:url('img/hero-wide.webp');background-position:center center;background-size:cover;background-repeat:no-repeat}
+    .hero .overlay{background:rgba(8,8,7,.85)}
+    .hero h1{font-family:var(--serif);font-size:clamp(28px,4.8vw,50px);font-weight:900;line-height:1.25;color:#fff;letter-spacing:-.02em;text-shadow:none}
+    .hero h1 em{color:var(--accent);font-style:italic}
+    .hero-sub{font-family:var(--sans);font-size:clamp(15px,2vw,20px);font-weight:400;line-height:1.5;color:var(--text-body);max-width:520px;margin:22px auto 0;letter-spacing:.01em;opacity:.85;text-shadow:none}
+    .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;color:var(--text);opacity:.4;animation:scrollBounce 2.4s ease-in-out infinite}
+    @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .dark-section{position:relative;z-index:3;background:var(--bg)}
+  </style>
+  <!-- Full stylesheet loaded async after critical CSS -->
+  <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
 </head>
 <body>
 
