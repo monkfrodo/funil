@@ -11,30 +11,18 @@ Faz parte do ecossistema Íntegros como produto de entrada (low-ticket).
 - **Frontend:** HTML + CSS + JS vanilla (100% estático)
 - **Integrações client-side:** ConvertKit/Kit (exit-intent popup, captura de email)
 - **Analytics:** Vercel Web Analytics
-- **Deploy:** VPS DigitalOcean (Nginx, serve estático) / Vercel
+- **Deploy:** Cloudflare Pages (`funil`), autodeploy via GitHub Actions
 - **Domínio:** funil.somosintegros.com.br
 
 ## Deploy
+Cloudflare Pages, projeto `funil` (funil.integros.org, funil.somosintegros.com.br).
 
-### DigitalOcean (produção)
+**Autodeploy (desde 2026-09-24):** todo push em `main` roda `.github/workflows/deploy.yml` no GitHub Actions, que publica a pasta `.` via `wrangler pages deploy --branch=main`. Secrets `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` ficam no repo.
 
-```bash
-ssh do
-cd /var/www/funil
-git pull
-# pronto — sem build, sem PM2
-```
-
-- **Nginx:** serve arquivos diretamente de `/var/www/funil`
-- **Config:** `/etc/nginx/sites-available/funil`
-- **IP:** 138.197.123.132
-
-### Ativar SSL
-
-```bash
-ssh do
-certbot --nginx -d funil.somosintegros.com.br
-```
+- Publicar = commit + push em `main`. **Não** usar `wrangler pages deploy` manual: o que não estiver no Git é sobrescrito no próximo push.
+- Republicar sem commit: `gh workflow run deploy.yml`. Acompanhar: `gh run list` / `gh run watch`.
+- Não vão para o site: `CLAUDE.md`, `AGENTS.md`, `README.md`, `.github`, `.claude*`, `functions/`, `scripts/`, `test/`, `package*.json`, `wrangler.*`. Pages Functions em `functions/` continuam sendo compiladas normalmente.
+- Guia geral: vault `30-tecnico/deploys-cloudflare.md`.
 
 ## Comandos
 
