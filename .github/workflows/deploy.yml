@@ -1,36 +1,39 @@
-name: Deploy to DigitalOcean
+name: Deploy to Cloudflare Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: cloudflare-pages-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
 jobs:
   deploy:
-    name: Deploy Static Site
+    name: Deploy funil
     runs-on: ubuntu-latest
-
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup SSH key
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Stage public files
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DO_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p ${{ secrets.DO_PORT }} -H ${{ secrets.DO_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          rsync -a ./ "$RUNNER_TEMP/site/" \
+            --exclude='.git*' --exclude='.github' --exclude='.claude*' \
+            --exclude='.wrangler' --exclude='.openai' --exclude='node_modules' \
+            --exclude='CLAUDE.md' --exclude='AGENTS.md' --exclude='README.md' \
+            --exclude='package*.json' --exclude='wrangler.*' \
+            --exclude='functions' --exclude='test' --exclude='scripts'
 
-      - name: Sync to server
-        run: |
-          rsync -az --delete \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='*.log' \
-            --exclude='CLAUDE.md' \
-            --exclude='README.md' \
-            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DO_PORT }} -o StrictHostKeyChecking=no" \
-            ./ ${{ secrets.DO_USER }}@${{ secrets.DO_HOST }}:/var/www/funil/
-
-      - name: Done
-        run: echo "Deploy concluido - funil.integros.org"
+      - name: Deploy
+        run: npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/site" --project-name=funil --branch=main
